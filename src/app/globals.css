@@ -1,0 +1,118 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-obsidian: #080808;
+  --color-charcoal: #111111;
+  --color-crimson: #E50920;
+  --color-crimson-deep: #A50B19;
+  --color-hairline: #292929;
+  --color-muted: #999999;
+
+  --font-display: var(--font-anton), Impact, "Arial Narrow", sans-serif;
+  --font-sans: var(--font-inter), system-ui, -apple-system, sans-serif;
+  --font-script: var(--font-alex-brush), cursive;
+  --font-mono: var(--font-space-mono), ui-monospace, monospace;
+}
+
+:root {
+  color-scheme: dark;
+  --bg-primary: #080808;
+  --bg-secondary: #111111;
+  --accent-primary: #E50920;
+  --accent-secondary: #A50B19;
+  --text-primary: #FFFFFF;
+  --text-secondary: #999999;
+  --border-hairline: #292929;
+}
+
+html {
+  background-color: #080808;
+  color: #FFFFFF;
+  scroll-behavior: auto;
+  overflow-x: clip;
+}
+
+body {
+  background-color: #080808;
+  color: #FFFFFF;
+  font-family: var(--font-sans);
+  overflow-x: clip;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background-color: #E50920;
+  color: #FFFFFF;
+}
+
+/* Custom subtle editorial scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #080808;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #292929;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #E50920;
+}
+
+/* Subtle film grain overlay for dark editorial depth */
+.editorial-grain {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 0);
+  background-size: 24px 24px;
+}
+
+/* Portrait edge blending mask so the photo dissolves naturally into #080808 */
+.portrait-mask {
+  -webkit-mask-image:
+    linear-gradient(to top, transparent 0%, rgba(0, 0, 0, 0.92) 22%, #000 45%, #000 84%, transparent 100%),
+    linear-gradient(to right, transparent 0%, #000 18%, #000 82%, transparent 100%);
+  -webkit-mask-composite: source-in;
+  mask-image:
+    linear-gradient(to top, transparent 0%, rgba(0, 0, 0, 0.92) 22%, #000 45%, #000 84%, transparent 100%),
+    linear-gradient(to right, transparent 0%, #000 18%, #000 82%, transparent 100%);
+  mask-composite: intersect;
+}
+
+/* Giant hero watermark text gradient fade matching dark editorial reference */
+.hero-watermark-gradient {
+  background: linear-gradient(180deg, #E50920 0%, #C4081B 52%, rgba(165, 11, 25, 0.22) 95%, rgba(8, 8, 8, 0) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Quote section atmospheric crimson wash */
+.quote-crimson-panel {
+  background:
+    radial-gradient(circle at 80% 25%, rgba(229, 9, 32, 0.34) 0%, rgba(165, 11, 25, 0.16) 42%, rgba(17, 17, 17, 0.95) 85%),
+    linear-gradient(145deg, #160507 0%, #0B0B0B 60%, #1F0407 100%);
+}
+
+/* Hide default cursor only when custom pointer is active on desktop */
+@media (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  body.custom-cursor-ready,
+  body.custom-cursor-ready a,
+  body.custom-cursor-ready button {
+    cursor: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+

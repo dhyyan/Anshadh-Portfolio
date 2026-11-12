@@ -1,10 +1,13 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useLayoutEffect, useRef } from "react";
 import Image from "next/image";
 import { MapPin, Sparkles, ArrowDownRight } from "lucide-react";
 import { heroData, siteConfig } from "@/data/portfolio";
 import { gsap, prefersReducedMotion, registerGsap } from "@/animations/gsapAnimations";
+
+const useIsomorphicLayoutEffect =
+  typeof window !== "undefined" ? useLayoutEffect : useEffect;
 
 export default function Hero({ ready = true }) {
   const sectionRef = useRef(null);
@@ -14,7 +17,7 @@ export default function Hero({ ready = true }) {
   const glowRef = useRef(null);
   const contentRef = useRef(null);
 
-  useEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     if (!ready) return undefined;
     registerGsap();
 

@@ -27,19 +27,26 @@ export default function PortfolioShell() {
     <>
       <CustomCursor />
       <Preloader onComplete={handlePreloaderComplete} />
-      <Navbar />
-      <main id="main-content">
-        <Hero ready={heroReady} />
-        <About />
-        <WhyChooseMe />
-        <DigitalMarketing />
-        <Services />
-        <WorkProcess />
-        <QuoteSection />
-        <Contact />
-      </main>
-      <Footer />
+      <div
+        className={
+          heroReady
+            ? "visible opacity-100"
+            : "invisible pointer-events-none opacity-0 select-none"
+        }
+      >
+        <Navbar />
+        <main id="main-content">
+          <Hero ready={heroReady} />
+          <About />
+          <WhyChooseMe />
+          <DigitalMarketing />
+          <Services />
+          <WorkProcess />
+          <QuoteSection />
+          <Contact />
+        </main>
+        <Footer />
+      </div>
     </>
   );
 }
-
